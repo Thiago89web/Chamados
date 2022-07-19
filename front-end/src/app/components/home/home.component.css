@@ -1,0 +1,35 @@
+.container {
+    width: 85%;
+    margin: auto;
+    padding-bottom: 3rem;  
+}
+
+h1 {
+    text-align: center;
+    margin-top: 2rem;
+    font-size: x-large;
+    font-weight: 500;
+    color: rgb(97, 93, 93);
+}
+
+h4{
+    margin-bottom: 1%;
+    color: rgb(97, 93, 93);
+    font-style: italic;
+}
+
+.contato{
+    margin-bottom: 0%;
+}
+
+img {
+    width: 100%;
+    max-height: 450px;
+}
+
+.title{
+    font-weight: 500;
+    color: rgb(97, 93, 93);
+    font-size: medium;
+    margin-bottom: .5rem;
+}

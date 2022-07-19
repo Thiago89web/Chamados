@@ -1,0 +1,52 @@
+.container{
+    width: 85%;
+    margin: auto;
+    padding-bottom: 3rem; 
+}
+
+.content{
+    width: 100%;
+    
+}
+
+.badge button{
+    margin-top: 1rem;
+    width: 100%;
+}
+
+p {
+    text-align: end;
+    font-weight: 600;
+    color: rgb(114, 111, 111);
+    margin-bottom: 0;
+    margin: .5rem;   
+}
+
+mat-card{
+    background: linear-gradient(180deg, rgb(49, 44, 153) 0%, hwb(0 97% 3%) 0%, rgb(147, 161, 253) 100%);
+    margin-top: .8rem;
+    padding: .2rem;
+}
+
+h1{
+    text-align: center;
+    font-weight: 600;
+    margin-top: 1rem;
+    color: rgb(97, 93, 93);
+}
+
+.actions{
+    text-align: end;
+}
+
+.actions button{
+    margin: .5rem;
+}
+
+mat-card-title{
+    padding-bottom: 1rem;
+}
+
+mat-card-subtitle{
+    font-size: 1.2rem;
+}

@@ -1,0 +1,27 @@
+
+<form>
+    <span class="spacer"></span>
+    <h1>Cadastro</h1>
+    <div class="forms">
+        <mat-form-field class="form" appearance="fill">
+            <mat-label>Nome</mat-label>
+            <input [(ngModel)]="colaborador.nome" name="colaborador.nome" required matInput placeholder="Ex. Nome">
+        </mat-form-field>
+
+        <mat-form-field class="form" appearance="fill">
+            <mat-label>Email</mat-label>
+            <input [(ngModel)]="colaborador.email" name="colaborador.email" required matInput placeholder="Ex. Email">
+        </mat-form-field>
+        <mat-form-field class="form" appearance="fill">
+            <mat-label>Senha</mat-label>
+            <input [(ngModel)]="colaborador.senha" name="colaborador.senha" type="password" 
+            required matInput placeholder="Ex. No mínimo 6 caracteres na senha">
+        </mat-form-field>
+
+    </div>
+
+    <div class="buttons">
+        <button (click)="create()"  mat-stroked-button color="primary">CADASTRAR</button>
+        <button (click)="cancel()" mat-stroked-button color="warn">CANCELAR</button>
+    </div>
+</form>

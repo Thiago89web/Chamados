@@ -1,0 +1,54 @@
+<app-header></app-header>
+<div class="container">
+    <h1>Chamados Abertos</h1>
+    <div class="btn-finalizados">
+        <button (click)="navegarParaFinalizados()" mat-stroked-button color="primary">Chamados finalizados</button>
+    </div>
+    <button routerLink="/create" class="novo-chamado mat-elevation-z8" mat-stroked-button color="primary">Novo Chamado</button>
+    
+    <!-- <div class="numPaginas">
+    <label for="">Páginas: </label>
+      <select (change)="numPages($event)">
+        <option *ngFor="let p of numPagina" [ngValue]="p">
+            {{p}}
+        </option>
+      </select>
+    </div> -->
+
+    <div class="content" *ngFor="let item of list | paginate: { itemsPerPage: 5, currentPage: pag ,
+    totalItems: total}; let i = index">
+    
+        <mat-card class="mat-elevation-z8">
+            <p>Data de Criação: {{item.dataCriacao}} </p>
+            <mat-card-header>
+              <mat-card-title>Número: {{item.id}} </mat-card-title>             
+              <mat-card-subtitle>Titulo: {{item.titulo}}</mat-card-subtitle>
+              <!-- <mat-card-subtitle>{{item.descricao}}</mat-card-subtitle> -->
+            </mat-card-header>
+            <div class="actions">
+                <button routerLink="visualizar/{{item.id}}" mat-mini-fab color="">
+                    <mat-icon>visibility</mat-icon>
+                </button>
+                <button (click)="finalizar(item)" mat-mini-fab color="primary">
+                    <mat-icon>done</mat-icon>
+                </button>
+                <button routerLink="update/{{item.id}}" mat-mini-fab color="accent">
+                    <mat-icon>edit</mat-icon>
+                </button>
+                <button (click)="delete(item.id, i)" mat-mini-fab color="warn">
+                    <mat-icon>delete</mat-icon>
+                </button>
+                
+            </div>
+          </mat-card>         
+    </div>
+
+    <div class="text-right">
+     <pagination-controls (pageChange)="carregarPagina(pag = $event);" 
+        previousLabel="Anterior" nextLabel="Próximo">
+     </pagination-controls>     
+    </div>
+       
+    
+</div>
+<app-footer></app-footer>

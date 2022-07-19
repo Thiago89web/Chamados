@@ -1,0 +1,38 @@
+
+img{
+    height: 3rem;
+}
+
+.header{
+    /*justify-content: center;*/
+    height: 10%;
+    color: white;
+    /*background-color: #3f51b5;*/
+    background-color: blueviolet;
+}
+
+.menu{
+    width: 85%;
+    margin: auto;
+   
+    /*margin-left: 0%;*/
+}
+
+.menu button{
+    font-size: 16px;
+    
+}
+
+/*.menu-logout{
+    margin-right: 0%;
+}*/
+
+span{
+    display: flex;
+    align-items: center;
+}
+
+h1{
+    padding-left: 1.2rem;
+
+}

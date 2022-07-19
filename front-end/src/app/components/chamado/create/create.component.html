@@ -1,0 +1,36 @@
+<app-header></app-header>
+<form class="example-form">
+
+  <h1>Criar novo chamado</h1>
+  
+  
+
+  <div class="forms">
+      <mat-form-field class="form" appearance="fill">
+      <mat-label>Titulo</mat-label>
+      <input [(ngModel)]="chamado.titulo" name="todo.titulo"  [formControl]="titulo"
+      required  
+      matInput placeholder="Ex. Titulo">
+      </mat-form-field> 
+     
+      <mat-form-field class="form" appearance="fill">
+      <mat-label>Descrição</mat-label>
+      <textarea [(ngModel)]="chamado.descricao" name="todo.descricao" [formControl]="descricao"
+      required  matInput placeholder="Ex. No mínimo 10 caracteres na descrição..."></textarea>
+      </mat-form-field>
+
+  </div>
+  <!-- <div class="file">
+      <button mat-raised-button color="Basic" class="upload-btn" >
+      <mat-icon>attach_file</mat-icon>      
+      <input type="file" class="file-input" (change)="onFileSelected($event)" #fileUpload>
+  </button>
+  </div> -->
+  
+  <div class="buttons">
+      <button (click)="create()" [disabled]="!validaCampos()" mat-stroked-button color="primary">CRIAR</button>
+      <button (click)="cancel()" mat-stroked-button color="warn">CANCELAR</button>
+    </div>
+</form>
+<app-footer></app-footer>
+

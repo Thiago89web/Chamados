@@ -1,0 +1,23 @@
+<app-header></app-header>
+<form class="example-form">
+
+  <h1>Visualizar chamado</h1>
+  
+  <div class="forms">
+      <mat-label>Data de Criação: {{dataCriacao}}</mat-label>
+      <mat-form-field class="form" appearance="fill">
+      <mat-label>Titulo</mat-label>
+      <input [(ngModel)]="chamado.titulo" name="chamado.titulo"  matInput placeholder="Ex. Titulo">
+      </mat-form-field> 
+     
+      <mat-form-field class="form" appearance="fill">
+      <mat-label>Descrição</mat-label>
+      <textarea [(ngModel)]="chamado.descricao" name="chamado.descricao"  matInput placeholder="Ex. Descrição..."></textarea>
+      </mat-form-field>
+  </div>
+  
+  <div class="buttons">              
+      <button (click)="voltar()"  mat-stroked-button color="primary">Voltar</button>
+    </div>
+</form>
+<app-footer></app-footer>
