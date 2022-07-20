@@ -12,19 +12,7 @@ import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 
 const routes: Routes = [
-  /*{ path: 'login', component: LoginComponent},
-  {
-    path: '', component: HomeComponent, canActivate: [AuthGuard], children: [
-      { path: 'listar', component: ListarComponent },
-      { path: 'finalizados', component: FinalizadosComponent },
-      { path: 'create', component: CreateComponent },
-      { path: 'listar/update/:id', component: UpdateComponent },
-      { path: 'listar/visualizar/:id', component: VisualizarComponent },
-      { path: 'finalizados/visualizar/:id', component: VisualizarComponent },
-      { path: 'finalizados/visualizar-finalizados/:id', component: VisualizarFinalizadosComponent }
-    ]
-  }*/
-
+ 
   { path: 'login', component: LoginComponent},
   { path: 'cadastro', component: CadastroComponent},
   { path: '', component: HomeComponent, canActivate: [AuthGuard] },
@@ -35,16 +23,6 @@ const routes: Routes = [
   { path: 'listar/visualizar/:id', component: VisualizarComponent, canActivate: [AuthGuard] },
   { path: 'finalizados/visualizar/:id', component: VisualizarComponent, canActivate: [AuthGuard] },
   { path: 'finalizados/visualizar-finalizados/:id', component: VisualizarFinalizadosComponent, canActivate: [AuthGuard] }
-
-  /*{ path: '', component: LoginComponent},
-  { path: 'home', component: HomeComponent },
-  { path: 'listar', component: ListarComponent },
-  { path: 'finalizados', component: FinalizadosComponent },
-  { path: 'create', component: CreateComponent },
-  { path: 'listar/update/:id', component: UpdateComponent },
-  { path: 'listar/visualizar/:id', component: VisualizarComponent },
-  { path: 'finalizados/visualizar/:id', component: VisualizarComponent },
-  { path: 'finalizados/visualizar-finalizados/:id', component: VisualizarFinalizadosComponent }*/
 
 ];
 
