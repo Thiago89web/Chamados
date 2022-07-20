@@ -13,7 +13,6 @@ import { StorageService } from 'src/app/services/StorageService';
 })
 export class ListarComponent implements OnInit {
 
-   //closed = 0;
    list: Chamado[] = [];
    chamado: Chamado = {
     id: '',
@@ -73,7 +72,6 @@ export class ListarComponent implements OnInit {
      this.service.update(this.chamado).subscribe((resposta) => {
        this.toast.success('Chamado finalizado com sucesso!', 'Sucesso');
        this.list = this.list.filter(chamado => chamado.id !== item.id);
-       //this.closed++;
        this.reloadPage();
       })      
      })
