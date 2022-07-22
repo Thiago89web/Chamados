@@ -1,9 +1,13 @@
 <app-header></app-header>
 <form class="example-form">
 
-  <h1>Chamado Finalizado</h1>
-  
-  <div class="forms">
+  <h3>Chamado Finalizado
+    <mat-icon>done_all</mat-icon>
+  </h3>
+
+  <span class="span-numero">Número: {{chamado.id}}</span>
+
+  <div class="forms">   
     <mat-label>Data de Criação: {{dataCriacao}}</mat-label>
       <mat-form-field class="form" appearance="fill">
       <mat-label>Titulo</mat-label>

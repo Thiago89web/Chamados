@@ -34,6 +34,7 @@ import { AuthInterceptorProvider } from './interceptor/auth.interceptor';
 import { StorageService } from './services/StorageService';
 import { CadastroComponent } from './components/cadastro/cadastro.component';
 import { ErrorInterceptorProvider } from './interceptor/error-interceptor';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [
@@ -68,6 +69,7 @@ import { ErrorInterceptorProvider } from './interceptor/error-interceptor';
     NgxPaginationModule,
     MatNativeDateModule,
     MatDatepickerModule,
+    MatTooltipModule,
     
     ToastrModule.forRoot({
       timeOut: 4000,

@@ -11,14 +11,18 @@
         <p>Data de Criação: {{item.dataCriacao}} </p>
           <mat-card-header>
             <mat-card-title>Número: {{item.id}}</mat-card-title>                           
-            <mat-card-subtitle>Titulo: {{item.titulo}}</mat-card-subtitle>           
+            <mat-card-subtitle>Titulo: {{item.titulo}}</mat-card-subtitle>
+            <mat-card-subtitle class="status" *ngIf="item.finalizado === true">Finalizado
+              <mat-icon>done_all</mat-icon>
+            </mat-card-subtitle>
+                      
           </mat-card-header>
           <div class="actions">
               <button routerLink="visualizar-finalizados/{{item.id}}" mat-mini-fab color="">
                   <mat-icon>visibility</mat-icon>
               </button>
                              
-              <button (click)="delete(item.id, i)" mat-mini-fab color="warn">
+              <button (click)="delete(item.id, i)" mat-mini-fab color="warn" *ngIf="showAdmin === true">
                   <mat-icon>delete</mat-icon>
               </button>
               

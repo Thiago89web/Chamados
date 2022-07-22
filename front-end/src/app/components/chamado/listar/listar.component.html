@@ -23,19 +23,23 @@
             <mat-card-header>
               <mat-card-title>Número: {{item.id}} </mat-card-title>             
               <mat-card-subtitle>Titulo: {{item.titulo}}</mat-card-subtitle>
-              <!-- <mat-card-subtitle>{{item.descricao}}</mat-card-subtitle> -->
+             
+              <mat-card-subtitle class="status" *ngIf="item.finalizado === false">
+                Aberto
+                <mat-icon>help</mat-icon>
+              </mat-card-subtitle>
             </mat-card-header>
             <div class="actions">
-                <button routerLink="visualizar/{{item.id}}" mat-mini-fab color="">
+                <button routerLink="visualizar/{{item.id}}" mat-mini-fab color="" matTooltip="Visualizar">
                     <mat-icon>visibility</mat-icon>
                 </button>
-                <button (click)="finalizar(item)" mat-mini-fab color="primary">
+                <button (click)="finalizar(item)" mat-mini-fab color="primary" matTooltip="Finalizar" *ngIf="showAdmin === true">
                     <mat-icon>done</mat-icon>
                 </button>
-                <button routerLink="update/{{item.id}}" mat-mini-fab color="accent">
+                <button routerLink="update/{{item.id}}" mat-mini-fab color="accent" matTooltip="Editar">
                     <mat-icon>edit</mat-icon>
                 </button>
-                <button (click)="delete(item.id, i)" mat-mini-fab color="warn">
+                <button (click)="delete(item.id, i)" mat-mini-fab color="warn" matTooltip="Deletar">
                     <mat-icon>delete</mat-icon>
                 </button>
                 

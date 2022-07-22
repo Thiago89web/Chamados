@@ -21,6 +21,9 @@ export class ListarComponent implements OnInit {
     finalizado: false,
     colaborador: ''
    }
+  prefil: any;
+  showAdmin = false;
+  showColaborador = false;
    total: any;
    pag: any;
 
@@ -36,8 +39,6 @@ export class ListarComponent implements OnInit {
     private storage: StorageService) { }
  
    ngOnInit(): void {   
-     
-    //this.findAllOpenAdm();
      this.findOpen() 
    }
  
@@ -49,7 +50,16 @@ export class ListarComponent implements OnInit {
    }*/
 
    findOpen(): void{  //teste
-    this.colaboradorService.findByEmail(this.storage.getLocalUser().email).subscribe(resposta => {           
+    this.colaboradorService.findByEmail(this.storage.getLocalUser().email).subscribe(resposta => { 
+      
+      //Puxando prefil do usuário
+      this.prefil = resposta.perfis;      
+      if(this.prefil == 'COLABORADOR'){            
+        this.showColaborador = true;
+      }else{
+        this.showAdmin = true
+      }
+     
     this.service.findOpen(resposta.id).subscribe(resp => {
    
     this.list =  resp.content
@@ -61,21 +71,18 @@ export class ListarComponent implements OnInit {
    } 
    
    finalizar(item: Chamado):void{
-    this.colaboradorService.findByEmail(this.storage.getLocalUser().email).subscribe(resposta => {   
-    this.chamado.colaborador = resposta.id;      
-  
+      
     this.chamado.id = item.id;
     this.chamado.titulo = item.titulo;
     this.chamado.descricao = item.descricao;
-    this.chamado.finalizado = item.finalizado = true;    
-    
-     this.service.update(this.chamado).subscribe((resposta) => {
+    this.chamado.finalizado = item.finalizado = true;
+    this.chamado.colaborador = item.colaborador.id;
+       
+     this.service.update(this.chamado).subscribe(() => {
        this.toast.success('Chamado finalizado com sucesso!', 'Sucesso');
        this.list = this.list.filter(chamado => chamado.id !== item.id);
        this.reloadPage();
-      })      
-     })
-    
+      })        
      
    }
  

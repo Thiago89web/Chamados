@@ -10,11 +10,11 @@ form {
     text-align: start;
   }
   
-  h1 {
+  h3 {
     font-size: 1.5rem;
-    font-weight: 600;
-    margin-bottom: 3rem;
-    color: rgb(104, 100, 100);
+    font-weight: 500;
+    margin-bottom: 2rem;
+    color: rgb(42, 138, 50);
   }
   
   .form {
@@ -33,5 +33,9 @@ form {
     padding-right: 2rem;
     padding-left: 2rem;
     width: 100%;
+  }
+
+  .span-numero{
+    margin-top: .5rem;
   }
   

@@ -2,7 +2,8 @@
 <form class="example-form">
 
   <h1>Visualizar chamado</h1>
-  
+  <h3 class="status" *ngIf="chamado.finalizado === false">Aberto</h3>
+  <span class="span-numero">Número: {{chamado.id}}</span>
   <div class="forms">
       <mat-label>Data de Criação: {{dataCriacao}}</mat-label>
       <mat-form-field class="form" appearance="fill">
@@ -19,5 +20,6 @@
   <div class="buttons">              
       <button (click)="voltar()"  mat-stroked-button color="primary">Voltar</button>
     </div>
+    
 </form>
 <app-footer></app-footer>

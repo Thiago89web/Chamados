@@ -16,7 +16,10 @@ export class FinalizadosComponent implements OnInit {
   listfinishd: Chamado[] = [];
   pag: any ;
   total: any;
- 
+  prefil: any;
+  showAdmin = false;
+  showColaborador = false;
+
   constructor(
     private service: ChamadoService, 
     private router: Router,
@@ -30,6 +33,14 @@ export class FinalizadosComponent implements OnInit {
 
   findAllClose(): void{
     this.colaboradorService.findByEmail(this.storage.getLocalUser().email).subscribe(resposta => {
+
+      this.prefil = resposta.perfis;
+      if(this.prefil == 'COLABORADOR'){              
+        this.showColaborador = true;
+      }else{
+        this.showAdmin = true      
+      }
+
     this.service.findAllClose(resposta.id).subscribe(resp =>{   
       this.listfinishd = resp.content;
       this.total = resp.totalElements;

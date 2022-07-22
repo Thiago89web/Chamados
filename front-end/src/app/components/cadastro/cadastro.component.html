@@ -1,8 +1,10 @@
 
-<form>
-    <span class="spacer"></span>
-    <h1>Cadastro</h1>
-    <div class="forms">
+<div class="content">
+<form class="mat-elevation-z12">
+    <div class="title-cadastro">
+        <h2>Cadastro</h2>
+      </div>
+    <div class="">
         <mat-form-field class="form" appearance="fill">
             <mat-label>Nome</mat-label>
             <input [(ngModel)]="colaborador.nome" name="colaborador.nome" required matInput placeholder="Ex. Nome">
@@ -25,3 +27,4 @@
         <button (click)="cancel()" mat-stroked-button color="warn">CANCELAR</button>
     </div>
 </form>
+</div>

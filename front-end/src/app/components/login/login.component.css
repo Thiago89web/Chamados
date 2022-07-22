@@ -35,9 +35,15 @@
  
  button {
     margin-top: 1.5rem;
-    margin-bottom: .5rem;
+    margin-bottom: 1rem;
+    font-size: 15px
  }
  
  mat-icon {
     opacity: .6;
+ }
+
+ .cad{
+   color: rgb(97, 93, 93);
+   font-weight: 500;
  }

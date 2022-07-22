@@ -33,4 +33,15 @@ form {
     padding-left: 2rem;
     width: 100%;
   }
+
+  .span-numero{
+    margin-top: .5rem;
+  }
+
+  .status{
+       
+    font-weight: 500;
+    color: blue;
+}
+
   

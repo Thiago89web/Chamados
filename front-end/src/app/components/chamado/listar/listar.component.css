@@ -49,6 +49,8 @@ mat-card{
 
 mat-card-title{
     padding-bottom: 1rem;
+    font-weight: 500;
+    color: rgb(97, 93, 93);
 }
 
 mat-card-subtitle{
@@ -75,4 +77,11 @@ mat-form-field {
     width: 100%;
     text-align: right;
     margin-top: 1rem;
+}
+
+.status{
+    margin-top: 2rem;
+    margin-bottom: -1rem;
+    font-weight: 400;
+    color: blue;
 }
