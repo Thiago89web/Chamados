@@ -48,7 +48,7 @@ public class TutorialController {
     }
 
     @GetMapping("/lives/{id}")
-    public ResponseEntity<Tutorial> getOneLive(@PathVariable(value="id") String id){
+    public ResponseEntity<Tutorial> getOneLive(@PathVariable Long id){
         Optional<Tutorial> tutorialO = tutorialService.findById(id);
         if(!tutorialO.isPresent()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -67,7 +67,7 @@ public class TutorialController {
     }
 
     @DeleteMapping("/lives/{id}")
-    public ResponseEntity<?> deleteLive(@PathVariable(value="id") String id) {
+    public ResponseEntity<?> deleteLive(@PathVariable Long id) {
         Optional<Tutorial> tutorialO = tutorialService.findById(id);
         if(!tutorialO.isPresent()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -78,7 +78,7 @@ public class TutorialController {
     }
 
     @PutMapping("/lives/{id}")
-    public ResponseEntity<Tutorial> updateLive(@PathVariable(value="id") String id,
+    public ResponseEntity<Tutorial> updateLive(@PathVariable Long id,
                                                       @RequestBody @Valid TutorialDTO objDTO) {
         Optional<Tutorial> tutorialO = tutorialService.findById(id);
         if(!tutorialO.isPresent()) {

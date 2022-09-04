@@ -5,7 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.thiago.chamado.entity.Tutorial;
 
 
-public interface TutorialRepository extends JpaRepository<Tutorial, String> {
+public interface TutorialRepository extends JpaRepository<Tutorial, Long> {
 
 	//Page<Live> findByLiveDateBeforeOrderByLiveDateDesc(LocalDateTime now, Pageable pageable);
 

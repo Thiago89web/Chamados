@@ -22,7 +22,7 @@ public class TutorialService {
         return tutorialRepository.findAll(pageable);        
     }
 
-    public Optional<Tutorial> findById(String id){
+    public Optional<Tutorial> findById(Long id){
         return tutorialRepository.findById(id);
     }
 

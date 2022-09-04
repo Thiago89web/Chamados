@@ -8,8 +8,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-
-
 @Entity
 public class Tutorial implements Serializable {
 
@@ -17,7 +15,7 @@ public class Tutorial implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private String id;
+	private Long id;
 	private String liveName;
 	private String channelName;
 	private String liveLink;
@@ -26,7 +24,7 @@ public class Tutorial implements Serializable {
 	public Tutorial() {
 	}
 
-	public Tutorial(String id, String liveName, String channelName, String liveLink,
+	public Tutorial(Long id, String liveName, String channelName, String liveLink,
 			LocalDateTime registrationDate) {
 		super();
 		this.id = id;
@@ -35,14 +33,15 @@ public class Tutorial implements Serializable {
 		this.liveLink = liveLink;
 		this.registrationDate = registrationDate;
 	}
-
-	public String getId() {
+	
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
+	
 
 	public String getLiveName() {
 		return liveName;

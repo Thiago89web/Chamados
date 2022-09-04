@@ -13,7 +13,7 @@ public class TutorialDTO implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
-	private String id;
+	private Long id;
 	
 	@NotBlank(message = "Nome do tutorial é obrigatório")
 	private String liveName;
@@ -38,13 +38,14 @@ public class TutorialDTO implements Serializable {
 		this.registrationDate = obj.getRegistrationDate();	
 	}
 		
-	public String getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
+
 
 	public String getLiveName() {
 		return liveName;
