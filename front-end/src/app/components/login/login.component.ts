@@ -17,6 +17,8 @@ export class LoginComponent implements OnInit {
     senha: ''
   }
 
+  showSpinner = false;
+
   username = new FormControl(null, Validators.minLength(3));
   senha = new FormControl(null, Validators.minLength(6));
 
@@ -26,25 +28,32 @@ export class LoginComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit(): void {
-    
+   
   }
 
   logar() {
+
     this.service.authenticate(this.form).subscribe(resposta => {     
-      this.service.successfulLogin(resposta.headers.get('Authorization').substring(7));
+      this.service.successfulLogin(resposta.headers.get('Authorization').substring(7));     
       this.toast.success('Login realizado com sucesso!')
+      this.loadSpinner();
       this.router.navigate([''])
-     
+      
     }, () => {
-      //this.toast.error('Usuário e/ou senha inválidos');     
+      ///this.toast.error('Usuário inválidos');     
     })
   }
-  
-  cadastro(){
-    this.router.navigate(['cadastro']);
+
+  /*validaCampos(): boolean {
+    return this.username.valid && this.senha.valid
+  }*/
+
+
+  loadSpinner(){
+    this.showSpinner = true
+    setTimeout(()=>{
+      this.showSpinner = false;
+    }, 8000);
   }
 
-  validaCampos(): boolean {
-    return this.username.valid && this.senha.valid
-  }
 }

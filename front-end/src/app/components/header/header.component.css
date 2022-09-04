@@ -4,11 +4,9 @@ img{
 }
 
 .header{
-    /*justify-content: center;*/
     height: 10%;
     color: white;
-    /*background-color: #3f51b5;*/
-    background-color: blueviolet;
+    background-color: #5a6bc9;
 }
 
 .menu{

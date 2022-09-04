@@ -1,8 +1,6 @@
 import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { Observable, throwError } from "rxjs";
-import { catchError, retry } from 'rxjs/operators';
-import { FieldMessage } from "../models/FieldMessage";
+import { Observable } from "rxjs";
 import { HandleErrorService } from "../services/handle-error-service.service";
 
 
@@ -31,12 +29,8 @@ export class ErrorInterceptor implements HttpInterceptor {
         }
       );
     });
-  }
-
-  
-    
+  }   
 }
-
 
 export const ErrorInterceptorProvider = {
     provide: HTTP_INTERCEPTORS,

@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpEvent, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { API_CONFIG } from '../config/api.config';
@@ -38,7 +38,7 @@ export class ChamadoService {
   }
 
   create(chamado: Chamado): Observable<Chamado> {
-    return this.http.post<Chamado>(API_CONFIG.baseUrl+'/chamados',chamado);
+    return this.http.post<Chamado>(API_CONFIG.baseUrl+'/chamados', chamado);
   }
 
   update(chamado: Chamado):Observable<Chamado>{
@@ -48,5 +48,28 @@ export class ChamadoService {
   delete(id: any): Observable<void>{
     return this.http.delete<void>(`${API_CONFIG.baseUrl}/chamados/${id}`);
   }
+
+  /*upload(formData: any):Observable<void>{
+    return this.http.post<void>(API_CONFIG.baseUrl+'/chamados/upload', formData);
+  }*/
+
+  upload(file: File): Observable<HttpEvent<any>> {
+    const formData: FormData = new FormData();
+    formData.append('file', file);
+    const req = new HttpRequest('POST', `${API_CONFIG.baseUrl}/files/upload`, formData, {
+      reportProgress: true,
+      responseType: 'json'
+    });
+    return this.http.request(req);
+  }
+
+  /*getFiles(): Observable {
+    return this.http.get(API_CONFIG.baseUrl+'/files/files');
+  }*/
+
+  getFileId(id: any): Observable<Chamado[]> {    
+    return this.http.get<Chamado[]>(`${API_CONFIG.baseUrl}/files/chamadoFile/${id}`);
+  }
+
 
 }

@@ -3,21 +3,16 @@
   <div class="menu">
   <button mat-button routerLink="" mat-button>Home</button>
   <button mat-button routerLink="/listar" mat-button>Chamado</button>
+
   <button mat-button> 
     <mat-icon>account_circle</mat-icon>     
     <label>{{username}}</label>
-  </button>
-  
-    <!-- <span>
-        <img src="assets/img/logo.png" alt="logo-chamado"/>
-    </span> -->
-    
-    
+  </button>  
 
-    <button class="menu-logout" mat-icon-button [matMenuTriggerFor]="menu">
+    <button class="menu-logout" mat-icon-button [matMenuTriggerFor]="menu2">
         <mat-icon>more_vert</mat-icon>
       </button>
-      <mat-menu #menu="matMenu">
+      <mat-menu #menu2="matMenu">
         <div mat-menu-item disabled="true">
           <mat-icon>email</mat-icon>
           <label>{{email}}</label>

@@ -3,7 +3,7 @@ form {
     margin: 2rem auto 0 auto;
     text-align: center;
     height: 35rem;
-    
+    font-size: 16px;
   }
   
   .data-finalizar {
@@ -35,7 +35,53 @@ form {
     width: 100%;
   }
 
-  .span-numero{
-    margin-top: .5rem;
+  textarea{
+    height: 6rem;
+  }
+
+  mat-label {
+    font-weight: 500;
+    color: rgb(97, 93, 93);
+  }
+  
+  .done-all {  
+    position: absolute;
+    padding-left: .5rem;    
+  }
+
+  button {
+    font-size: 18px;
+  }
+
+  mat-label {
+    font-size: 18px;
+    font-weight: 500;
+    color: #5a6bc9;
+  }
+  
+  .card-file {
+    font-weight: 500;
+    color: rgb(97, 93, 93);
+    background-color: rgb(237, 245, 245);
+    margin-bottom: 1rem;
+  }
+  
+  .card-header{
+    font-size: 18px;
+    font-weight: 500;
+    color: white;
+    background-color: rgb(240, 243, 243);
+    background-color: #5a6bc9;
+    
+  }
+  .content-card{
+    text-align: left;
+    font-weight: 500;
+    background-color: rgb(252, 252, 252);
+  }
+  
+  mat-card-subtitle {
+    font-size: 18px;
+    padding: .5rem;
   }
   

@@ -43,14 +43,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	};
 
 	private static final String[] PUBLIC_MATCHERS_GET = {
-			"/chamados/**"
-			
+			"/chamados/**",
+			"/files/**",
+			"/lives/**"
 	};
 
 	private static final String[] PUBLIC_MATCHERS_POST = {
 			"/chamados/**",
-			"/auth/forgot/**",
-			"/colaboradores/cadastro**"
+			"/colaboradores/**",
+			"/lives/**",
+			"/auth/forgot/**"
 	};
 	
 	@Override

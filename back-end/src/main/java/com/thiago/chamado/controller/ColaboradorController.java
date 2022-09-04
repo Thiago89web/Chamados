@@ -41,14 +41,10 @@ public class ColaboradorController {
 	}
 	
 	@RequestMapping(value="/email", method=RequestMethod.GET)
-	//public ResponseEntity<Colaborador> findEmail(@RequestParam(value="value") String email) {
 	public ResponseEntity<Optional<Colaborador>> findEmail(@RequestParam(value="value") String email) {
 		Optional<Colaborador> obj = service.findByEmail(email);
 				
 		return ResponseEntity.ok().body(obj);
-		
-		//Colaborador obj = service.findByEmail(email);
-		//return ResponseEntity.ok().body(obj);
 	}
 	
 	/*@RequestMapping(method=RequestMethod.POST)
@@ -61,7 +57,7 @@ public class ColaboradorController {
 	}*/
 	
 	@RequestMapping(value="/cadastro", method=RequestMethod.POST)
-	public ResponseEntity<Void> insert(@RequestBody ColaboradorDTO objDTO) {
+	public ResponseEntity<Void> insert(@Valid @RequestBody ColaboradorDTO objDTO) {
 		
 		Colaborador obj = service.insert(objDTO);
 		//obj = service.insert(obj);

@@ -2,33 +2,53 @@
 <form class="example-form">
 
   <h1>Criar novo chamado</h1>
-  
-  
 
   <div class="forms">
+    <div class="select-motivo">
+      <mat-form-field appearance="fill">
+        <mat-label class="lebelmotivo">Selecione o motivo</mat-label>
+        <mat-select [(ngModel)]="chamado.motivo" name="motivo" required>
+          <mat-option *ngFor="let mot of motivos" value="{{ mot.id }}">{{mot.tipoMotivo}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
       <mat-form-field class="form" appearance="fill">
-      <mat-label>Titulo</mat-label>
-      <input [(ngModel)]="chamado.titulo" name="todo.titulo"  [formControl]="titulo"
-      required  
-      matInput placeholder="Ex. Titulo">
-      </mat-form-field> 
-     
-      <mat-form-field class="form" appearance="fill">
-      <mat-label>Descrição</mat-label>
-      <textarea [(ngModel)]="chamado.descricao" name="todo.descricao" [formControl]="descricao"
-      required  matInput placeholder="Ex. No mínimo 10 caracteres na descrição..."></textarea>
+      <mat-label>Nome da escola</mat-label>
+      <input [(ngModel)]="chamado.titulo" name="todo.titulo" required 
+        
+      matInput placeholder="Ex. Nome a escola (Opcional)">
       </mat-form-field>
 
+      <!-- <div class="btn-upload">
+        <button name="fileInput"><mat-icon>upload</mat-icon>Upload</button>
+      </div> -->
+      
+      <mat-divider></mat-divider>
+      <div class="file">      
+      <input class="file-input" type="file" id="fileInput" (change)="selectFile($event)" name="fileInput" />
+      <p class="msg2mb" *ngIf="message == ''">Tamanho maxímo do arquivo 2MB.</p>
+      </div>
+     
+      <div *ngIf="message" class="message"> 
+       {{ message }} <mat-icon class="done-file">done_all
+         </mat-icon> <mat-divider></mat-divider>     
+      </div>
+      
+
+      <mat-form-field class="form" appearance="fill">
+      <mat-label>Descrição do motivo</mat-label>
+      <textarea [(ngModel)]="chamado.descricao" name="todo.descricao" [formControl]="descricao"
+      matInput placeholder="Ex. No maxímo 255 caracteres na descrição..."></textarea>
+      <span *ngIf="!validaCampos()" style="font-size: 12px; color: rgb(238, 90, 90);">      
+        Tamanho maxímo 255 caracteres!
+     </span>
+      </mat-form-field>
+      
   </div>
-  <!-- <div class="file">
-      <button mat-raised-button color="Basic" class="upload-btn" >
-      <mat-icon>attach_file</mat-icon>      
-      <input type="file" class="file-input" (change)="onFileSelected($event)" #fileUpload>
-  </button>
-  </div> -->
   
   <div class="buttons">
-      <button (click)="create()" [disabled]="!validaCampos()" mat-stroked-button color="primary">CRIAR</button>
+      <button (click)="create()" mat-stroked-button color="primary">CRIAR</button>
       <button (click)="cancel()" mat-stroked-button color="warn">CANCELAR</button>
     </div>
 </form>

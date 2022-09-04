@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialogRef } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { Chamado } from 'src/app/models/chamado';
 import { ChamadoService } from 'src/app/services/chamado.service';
 
@@ -13,16 +15,23 @@ export class VisualizarComponent implements OnInit {
   chamado: Chamado = {
     titulo: '',
     descricao: '',
-    finalizado: false
+    finalizado: false,
+    motivo:  '',
+    fileEntity:''
   }
   dataCriacao: any;
-
-  constructor(private service: ChamadoService, private router: Router, private route: ActivatedRoute) { }
+  fileInfos?: Observable<any>;
+  
+  constructor(
+    private service: ChamadoService, 
+    private router: Router, 
+    private route: ActivatedRoute,
+    /* public dialogRef: MatDialogRef<VisualizarComponent>*/) { }
 
   ngOnInit(): void {
     this.chamado.id = this.route.snapshot.paramMap.get("id")!;
     this.findById();
-    
+    this.findFileId();
   }
 
   findById(): void{
@@ -34,7 +43,12 @@ export class VisualizarComponent implements OnInit {
   }
 
   voltar(): void {
-    this.router.navigate(['listar'])
+    //this.dialogRef.close();
+    this.router.navigate(['listar']);
+  }
+
+  findFileId(){      
+    this.fileInfos = this.service.getFileId(this.chamado.id);    
   }
 
   /*formataData(): void {

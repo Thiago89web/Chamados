@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { Observable } from 'rxjs';
 import { Chamado } from 'src/app/models/chamado';
+import { Motivo } from 'src/app/models/motivo';
 import { ChamadoService } from 'src/app/services/chamado.service';
-import { ColaboradorService } from 'src/app/services/colaborador.service';
-import { StorageService } from 'src/app/services/StorageService';
+import { MotivoService } from 'src/app/services/motivo.service';
 
 @Component({
   selector: 'app-update',
@@ -17,49 +18,57 @@ export class UpdateComponent implements OnInit {
     titulo: '',
     descricao: '',
     colaborador: '',
-    
-    finalizado: false
+    finalizado: false,
+    motivo: '',
+    fileEntity: ''
   }
+  fileInfos?: Observable<any>;
+  motivos: Motivo[] = []
 
   constructor(private service: ChamadoService, 
     private router: Router, 
     private route: ActivatedRoute,
     private toast: ToastrService,
-    private colaboradorService: ColaboradorService,
-    private storage: StorageService) { }
+    private motivoService: MotivoService) { }
 
   ngOnInit(): void {
     this.chamado.id = this.route.snapshot.paramMap.get("id")!;
     this.findById();
-    this.findIdColaborador(this.storage.getLocalUser().email);
+    this.findAllMotivos();
+    this.findFileId(this.chamado.id);
   }
 
   findById(): void{
     this.service.findById(this.chamado.id).subscribe((resposta) => {
       this.chamado = resposta;
-         
+      this.chamado.colaborador =  resposta.colaborador.id;     
+      this.chamado.motivo = resposta.motivo.id;
+      this.chamado.fileEntity = resposta.fileEntity.id
+      //this.findFileId(this.chamado.id);
     })
   }
 
   update(): void{
-    //this.formataData();
-    this.service.update(this.chamado).subscribe((resposta) => {
+    this.service.update(this.chamado).subscribe(() => {
     this.toast.success('Chamado atualizado com sucesso!', 'Sucesso');
     this.router.navigate(['listar']);
-    }, error => {
-      
+    }, error => {      
       this.toast.error('Falha ao atualizar o chamado!', 'Error');      
-    })
-  }
-
-  findIdColaborador(email: any): void {
-    this.colaboradorService.findByEmail(email).subscribe(resposta => {
-      this.chamado.colaborador = resposta.id;
     })
   }
 
   cancel(): void {
     this.router.navigate(['listar'])
+  }
+
+  findAllMotivos(): void {
+    this.motivoService.findAll().subscribe(resposta => {
+      this.motivos = resposta;
+    })
+  }
+
+  findFileId(id: any){      
+    this.fileInfos = this.service.getFileId(id);   
   }
 
  /* formataData(): void {

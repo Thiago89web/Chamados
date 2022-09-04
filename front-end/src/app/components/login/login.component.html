@@ -2,22 +2,27 @@
   
     <form class="form mat-elevation-z8"
     #f="ngForm" novalidate>
-      <h1>Chamados</h1>
+      <h1>Login</h1>
         <mat-form-field class="full-width" appearance="fill">
-          <mat-label>Username:</mat-label>
+          <mat-label>Email:</mat-label>
           <input [formControl]="username" required
            [(ngModel)]="form.email" name="username" matInput placeholder="Ex. Username">
+           <mat-icon matSuffix>email</mat-icon>
         </mat-form-field>
 
         <mat-form-field class="full-width" appearance="fill">
             <mat-label>Senha:</mat-label>
             <input [formControl]="senha" required
             [(ngModel)]="form.senha" name="senha" type="password" matInput placeholder="Ex. Password">
+            <mat-icon matSuffix>password</mat-icon>
           </mat-form-field>
-          <button (click)="logar()" [disabled]="!validaCampos()" class="full-width mat-elevation-z4" mat-stroked-button color="primary">Login</button>
-         
-          <label class="cad" (click)="cadastro()" >Cadastrar-se</label>
-      </form>
+          <button (click)="logar()"  class="full-width mat-elevation-z4" mat-stroked-button>Login</button>
+                            <!-- [disabled]="!validaCampos()" -->
+          <div class="inputBx">
+            <p>Não tem uma conta ? <a routerLink="/cadastro">Inscrever-se</a></p>
+          </div>
           
+      </form>
+      <mat-spinner *ngIf="showSpinner"></mat-spinner>
 </div>
 

@@ -2,7 +2,8 @@ form {
   width: 70%;
   margin: 2rem auto 0 auto;
   text-align: center;
-  height: 35rem;
+  height: 45rem;
+  
 }
 
 .data-finalizar {
@@ -11,9 +12,9 @@ form {
 
 h1 {
   font-size: 1.5rem;
-  font-weight: 600;
+  font-weight: 500;
   margin-bottom: 3rem;
-  color: rgb(104, 100, 100);
+  color: rgb(117, 114, 114);
 }
 
 .form {
@@ -33,13 +34,67 @@ button {
   width: 100%;
 }
 
-/**.file-input {
-  display: none;
-}*/
+.btn-upload {
+  text-align: left;
+}
+.btn-upload button{
+  color: white;
+  background-color: #5e70d6;
+}
 
-.file {   
+.select-motivo {
+ text-align: left;
+ font-weight: 500;
+ font-size: 16px;
+}
+
+.lebelmotivo {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.file {  
+  text-align: left; 
   margin-top: 1rem;
-  margin-bottom: 1rem;
- 
+}
+
+.file .file-input{
+  font-size: 18px;
+  color: rgb(104, 100, 100);
+  margin-bottom: .3rem;
+}
+
+.message {
+  font-size: 16px;
+  color: rgb(98, 57, 173);
+  margin-bottom: 2rem;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.done-file {
+  position: absolute;
+  padding-left: .5rem;
+}
+
+button {
+  font-size: 18px;
+}
+
+.msg2mb {
+  color: red;
+  margin-bottom: 2rem;
+}
+
+mat-label {
+  font-size: 20px;
+}
+input {
+  font-size: 18px;
+}
+
+textarea{
+  height: 6rem;
+  font-size: 18px;
 }
 

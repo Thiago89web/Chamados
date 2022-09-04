@@ -1,27 +1,23 @@
 package com.thiago.chamado.services;
 
-import java.net.URI;
 import java.util.List;
 import java.util.Optional;
 
+import org.hibernate.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Sort.Direction;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.multipart.MultipartFile;
 
 import com.thiago.chamado.dto.ColaboradorDTO;
 import com.thiago.chamado.entity.Colaborador;
 import com.thiago.chamado.entity.enums.Perfil;
+import com.thiago.chamado.exceptions.ResourceNotFoundException;
 import com.thiago.chamado.repository.ColaboradorRepository;
 import com.thiago.chamado.security.UserSS;
 import com.thiago.chamado.services.exceptions.AuthorizationException;
 import com.thiago.chamado.services.exceptions.DataIntegrityException;
-import com.thiago.chamado.services.exceptions.ObjectNotFoundException;
 
 @Service
 public class ColaboradorService {
@@ -53,7 +49,7 @@ public class ColaboradorService {
 		}
 		
 		Optional<Colaborador> obj = repository.findById(id);
-		return obj.orElseThrow(() -> new ObjectNotFoundException(
+		return obj.orElseThrow(() -> new ResourceNotFoundException(
 				"Objeto não encontrado! Id: " + id + ", Tipo: " + Colaborador.class.getName()));
 		
 	}
@@ -136,9 +132,9 @@ public class ColaboradorService {
 		newObj.setEmail(obj.getEmail());
 	}
 	
-	public URI uploadProfilePicture(MultipartFile multipartFile) {
+	/*public URI uploadProfilePicture(MultipartFile multipartFile) {
 		return null;
-		/*UserSS user = UserService.authenticated();
+		UserSS user = UserService.authenticated();
 		if (user == null) {
 			throw new AuthorizationException("Acesso negado");
 		}
@@ -149,8 +145,8 @@ public class ColaboradorService {
 		
 		String fileName = prefix + user.getId() + ".jpg";
 		
-		return s3Service.uploadFile(imageService.getInputStream(jpgImage, "jpg"), fileName, "image");*/
-	}
+		return s3Service.uploadFile(imageService.getInputStream(jpgImage, "jpg"), fileName, "image");
+	}*/
 	
 	private void validaEmail(ColaboradorDTO objDTO) {
 		
@@ -158,7 +154,7 @@ public class ColaboradorService {
 		
 		if (obj.isPresent()  && obj.get().getId() != objDTO.getId()) {
 			
-			throw new DataIntegrityViolationException("E-mail já cadastrado no sistema!");
+			throw new DataIntegrityViolationException("E-mail já está cadastrado no sistema!");
 		}
 		
 	}

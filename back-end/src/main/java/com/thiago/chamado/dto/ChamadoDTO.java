@@ -3,6 +3,11 @@ package com.thiago.chamado.dto;
 import java.io.Serializable;
 import java.time.LocalDate;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.Length;
+
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.thiago.chamado.entity.Chamado;
 
@@ -11,8 +16,10 @@ public class ChamadoDTO implements Serializable {
 	
 	private Long id;
 	
+	@NotBlank(message = "O nome da escola é obrigatório!")
 	private String titulo;
 	
+	@Length(max=255, message="Descrição deve ter no maxímo  255 caracteres!")
 	private String descricao;
 	
 	@JsonFormat(pattern = "dd/MM/yyyy")
@@ -21,6 +28,11 @@ public class ChamadoDTO implements Serializable {
 	private Boolean finalizado = false;
 	
 	private Long colaborador;
+	
+	@NotNull(message = "O Motivo é obrigatório!")
+	private Long motivo;
+	
+	private Long fileEntity;
 	
 	public ChamadoDTO() {
 
@@ -34,7 +46,11 @@ public class ChamadoDTO implements Serializable {
 		this.dataCriacao = obj.getDataCriacao();
 		this.finalizado = obj.getFinalizado();
 		this.colaborador = obj.getColaborador().getId();
+		this.motivo = obj.getMotivo().getId();
+		this.fileEntity = obj.getFileEntity().getId();
 	}
+	
+	
 
 	public Long getId() {
 		return id;
@@ -83,6 +99,21 @@ public class ChamadoDTO implements Serializable {
 	public void setColaborador(Long colaborador) {
 		this.colaborador = colaborador;
 	}
-	
+
+	public Long getMotivo() {
+		return motivo;
+	}
+
+	public void setMotivo(Long motivo) {
+		this.motivo = motivo;
+	}
+
+	public Long getFileEntity() {
+		return fileEntity;
+	}
+
+	public void setFileEntity(Long fileEntity) {
+		this.fileEntity = fileEntity;
+	}
 
 }

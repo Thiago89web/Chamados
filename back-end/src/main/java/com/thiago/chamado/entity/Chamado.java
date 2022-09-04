@@ -4,16 +4,19 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
+@Table(name = "chamados")
 public class Chamado implements Serializable{
 
 	private static final long serialVersionUID = 1L;
@@ -35,12 +38,21 @@ public class Chamado implements Serializable{
 	@JoinColumn(name = "colaborador_id")
 	private Colaborador colaborador;
 	
+	@ManyToOne
+	@JoinColumn(name = "motivo_id")
+	private Motivo motivo;
+	
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "file_id")
+	private FileEntity fileEntity;
+	
 	public Chamado() {
 
 	}	
 
 	public Chamado(Long id, String titulo, String descricao, LocalDate dataCriacao, Boolean finalizado,
-			Colaborador colaborador) {
+			Colaborador colaborador, Motivo motivo, FileEntity fileEntity
+			) {
 		super();
 		this.id = id;
 		this.titulo = titulo;
@@ -48,10 +60,11 @@ public class Chamado implements Serializable{
 		this.dataCriacao = dataCriacao;
 		this.finalizado = finalizado;
 		this.colaborador = colaborador;
+		this.motivo = motivo;
+		this.fileEntity = fileEntity;
+		
 	}
-
-
-
+	
 	public Long getId() {
 		return id;
 	}
@@ -101,6 +114,22 @@ public class Chamado implements Serializable{
 		this.colaborador = colaborador;
 	}
 
+	public Motivo getMotivo() {
+		return motivo;
+	}
+
+	public void setMotivo(Motivo motivo) {
+		this.motivo = motivo;
+	}
+	
+	public FileEntity getFileEntity() {
+		return fileEntity;
+	}
+
+	public void setFileEntity(FileEntity fileEntity) {
+		this.fileEntity = fileEntity;
+	}
+	  
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
@@ -118,7 +147,5 @@ public class Chamado implements Serializable{
 		return Objects.equals(id, other.id);
 	}
 
-	
 		
-	
 }

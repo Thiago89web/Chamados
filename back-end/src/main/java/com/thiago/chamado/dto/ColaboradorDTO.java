@@ -6,7 +6,9 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.Length;
 
@@ -20,14 +22,15 @@ public class ColaboradorDTO implements Serializable {
 	
 	private Long id;
 	
-	@NotEmpty(message="Preenchimento obrigatório")
-	@Length(min=5, max=120, message="O tamanho deve ser entre 5 e 120 caracteres")
+	@NotBlank(message = "O nome é obrigatório!")
+	@Length(min=5, max=120, message="O nome deve ter entre 5 e 120 caracteres!")
 	private String nome;
 	
-	@NotEmpty(message="Preenchimento obrigatório")
+	@NotBlank(message = "Email é obrigatório!")
 	@Email(message="Email inválido")
 	private String email;
 	
+	@NotBlank(message = "A senha é obrigatória!")
 	private String senha;
 	
 	protected Set<Integer> perfis = new HashSet<>();

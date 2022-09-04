@@ -2,19 +2,32 @@
 <form class="example-form">
 
   <h1>Visualizar chamado</h1>
-  <h3 class="status" *ngIf="chamado.finalizado === false">Aberto</h3>
-  <span class="span-numero">Número: {{chamado.id}}</span>
+  <h2 class="status" *ngIf="chamado.finalizado === false">Chamado em aberto!</h2>
   <div class="forms">
-      <mat-label>Data de Criação: {{dataCriacao}}</mat-label>
-      <mat-form-field class="form" appearance="fill">
-      <mat-label>Titulo</mat-label>
-      <input [(ngModel)]="chamado.titulo" name="chamado.titulo"  matInput placeholder="Ex. Titulo">
-      </mat-form-field> 
-     
-      <mat-form-field class="form" appearance="fill">
-      <mat-label>Descrição</mat-label>
-      <textarea [(ngModel)]="chamado.descricao" name="chamado.descricao"  matInput placeholder="Ex. Descrição..."></textarea>
-      </mat-form-field>
+    <mat-card class="card-header"><mat-label class="num-label">Número: {{chamado.id}}</mat-label></mat-card>
+    <mat-divider></mat-divider>
+      <mat-card class="content-card">       
+        <mat-card-title-group>       
+          <mat-card-subtitle><mat-label>Chamado criado por:</mat-label> {{chamado.colaborador.nome}}</mat-card-subtitle>
+          <mat-card-subtitle><mat-label>Data de Criação:</mat-label> {{dataCriacao}}</mat-card-subtitle>
+          <mat-card-subtitle><mat-label>Motivo:</mat-label> {{chamado.motivo.tipoMotivo}}</mat-card-subtitle>
+          <mat-card-subtitle><mat-label>Nome da escola:</mat-label> {{chamado.titulo}}</mat-card-subtitle>
+          <mat-card-subtitle><mat-label>Descrição do motivo:</mat-label> {{chamado.descricao}}</mat-card-subtitle>          
+        </mat-card-title-group>
+      </mat-card>
+      <mat-divider></mat-divider>
+      <mat-card class="card-file">
+        <!-- <mat-card-header>
+          <mat-card-title>Lista de arquivos</mat-card-title>
+        </mat-card-header> -->
+        <mat-card-content>
+          <mat-list role="list">
+            <mat-list-item role="listitem" *ngFor="let file of fileInfos | async">
+             <a href="{{ file.url }}">{{ file.nome }}<mat-icon style="position: absolute;">download</mat-icon></a>
+            </mat-list-item>
+          </mat-list>
+        </mat-card-content>
+      </mat-card>
   </div>
   
   <div class="buttons">              

@@ -4,15 +4,36 @@
     
 
   <div class="forms">
+    <div class="select-motivo">
+      <mat-form-field appearance="fill">
+        <mat-label>Selecione o motivo</mat-label>
+        <mat-select [(ngModel)]="chamado.motivo" name="motivo" required>
+          <mat-option *ngFor="let mot of motivos" value="{{ mot.id }}">{{mot.tipoMotivo}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
       <mat-form-field class="form" appearance="fill">
-      <mat-label>Titulo</mat-label>
+      <mat-label>Nome da escola </mat-label>
       <input [(ngModel)]="chamado.titulo" name="chamado.titulo"  matInput placeholder="Ex. Titulo">
       </mat-form-field> 
      
       <mat-form-field class="form" appearance="fill">
-      <mat-label>Descrição</mat-label>
+      <mat-label>Descrição do motivo </mat-label>
       <textarea [(ngModel)]="chamado.descricao" name="chamado.descricao"  matInput placeholder="Ex. Descrição..."></textarea>
       </mat-form-field>
+      <mat-card class="example-card">
+        <!-- <mat-card-header>
+          <mat-card-title>Lista de arquivos</mat-card-title>
+        </mat-card-header> -->
+        <mat-card-content>
+          <mat-list role="list">
+            <mat-list-item role="listitem" *ngFor="let file of fileInfos | async">
+             <a href="{{ file.url }}">{{ file.nome }}</a> 
+            </mat-list-item>
+          </mat-list>
+        </mat-card-content>
+      </mat-card>
   </div>
   
   <div class="buttons">

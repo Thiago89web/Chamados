@@ -5,5 +5,6 @@ export interface Chamado {
     dataCriacao?: String,
     finalizado: Boolean,
     colaborador?: any,
-
+    motivo?: any,
+    fileEntity?: any
 }

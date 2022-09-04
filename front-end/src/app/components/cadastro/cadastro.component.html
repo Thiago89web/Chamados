@@ -2,29 +2,32 @@
 <div class="content">
 <form class="mat-elevation-z12">
     <div class="title-cadastro">
-        <h2>Cadastro</h2>
+        <h1>Cadastro</h1>
       </div>
     <div class="">
         <mat-form-field class="form" appearance="fill">
             <mat-label>Nome</mat-label>
             <input [(ngModel)]="colaborador.nome" name="colaborador.nome" required matInput placeholder="Ex. Nome">
+            <mat-icon matSuffix>people</mat-icon>
         </mat-form-field>
 
         <mat-form-field class="form" appearance="fill">
             <mat-label>Email</mat-label>
             <input [(ngModel)]="colaborador.email" name="colaborador.email" required matInput placeholder="Ex. Email">
+            <mat-icon matSuffix>email</mat-icon>
         </mat-form-field>
         <mat-form-field class="form" appearance="fill">
             <mat-label>Senha</mat-label>
             <input [(ngModel)]="colaborador.senha" name="colaborador.senha" type="password" 
             required matInput placeholder="Ex. No mínimo 6 caracteres na senha">
+            <mat-icon matSuffix>password</mat-icon>
         </mat-form-field>
 
     </div>
 
     <div class="buttons">
-        <button (click)="create()"  mat-stroked-button color="primary">CADASTRAR</button>
-        <button (click)="cancel()" mat-stroked-button color="warn">CANCELAR</button>
+        <button class="mat-elevation-z4" (click)="create()"  mat-stroked-button color="primary">CADASTRAR</button>
+        <button class="btn-cancel mat-elevation-z4" (click)="cancel()" mat-stroked-button color="warn">CANCELAR</button>
     </div>
 </form>
 </div>

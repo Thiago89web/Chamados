@@ -1,12 +1,83 @@
 <app-header></app-header>
 <div class="container">
-<span>
-    <h1>Bem Vindo ao Sistema de chamado!</h1>
-    <div class="title">SMEC - Ponto Eletrônico</div>
-    <h4 class="contato">Contato: (95) 98404-9681</h4>  
-    <h4>E-mail: pontosisgep@gmail.com</h4>
-    
-</span>
-<img mat-card-image src="assets/img/home.png" alt="Home">
+  <span class="span">
+      <h1>Bem Vindo ao Sistema de chamado!</h1>
+      <div class="title">Empresa LTDA</div>
+      <h4 class="contato">Contato: (99) 98000-0000</h4>  
+      <h4>E-mail: teste@gmail.com</h4>
+      <!-- <div class="title">Ponto Eletrônico</div>
+      <h4 class="contato">Contato: (95) 98404-9681</h4>  
+      <h4>E-mail: pontosisgep@gmail.com</h4>    -->
+  </span>
+  <mat-toolbar>
+    <mat-toolbar-row style="font-size:1.5rem; height: 80px;">
+        <span> Tutoriais</span>
+        <span class="example-spacer"></span>
+        <button class="btn-add" mat-raised-button (click)="addLive()"><mat-icon>add</mat-icon> Tutorial</button>
+    </mat-toolbar-row>
+  </mat-toolbar>
+<!-- <img mat-card-image src="assets/img/home.png" alt="Home"> -->
+
+
+<!-- <div class="content">
+  <div fxLayout="row wrap" fxLayoutGap="16px grid">
+    <div fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="33%" *ngFor="let num of [1,2,3,4,5,6,7,8]">
+      <mat-card class="mat-elevation-z4" >
+        <mat-card-header>
+          <mat-card-title>Título {{num}}</mat-card-title>
+        </mat-card-header>
+        <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg">
+        <mat-card-content>
+          <p>
+            The Himalayas is a mountain range in Asia.
+          </p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-button>LIKE</button>
+          <button mat-button>SHARE</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+  </div> -->
+
+  <mat-tab-group>
+  
+    <mat-tab label="TUTORIAIS IDCLASS">
+      <mat-progress-bar mode="indeterminate" *ngIf="!livesPreviousReady"></mat-progress-bar>
+      <div *ngIf="livesPreviousReady" fxLayout="row wrap" fxLayoutAlign="start center" style="padding: 2%; color:  #3f51b5;">
+        <!-- <div fxFlex="100" style="margin-left: 0.5%; font-weight: bold;">REALIZADAS</div> -->
+        <ng-container *ngFor="let live of livesPrevious" style="margin: 0.5%;">
+          
+          <mat-card class="mat-card-live" fxFlex="0 1 calc(33.3% - 11px)"
+          fxFlex.lt-md="0 1 calc(50% - 11px)"
+          fxFlex.lt-sm="100%">
+  
+            <mat-card-title class="mat-card-title-live">
+              <div class="row">
+                <p>
+                  <span style="font-size:0.9rem;" fxFlex="70" fxLayoutAlign="start center">{{live.liveName}}</span>
+                  <span fxFlex></span>
+                  <mat-chip fxFlex="25" class="mat-chip-date" selected="true" fxLayoutAlign="center center">
+                    <span style="font-size:0.7rem;">{{live.registrationDate | localDateTime}}</span>
+                  </mat-chip>
+                </p>
+                <p style="font-size:0.7rem;">Canal: <span>{{live.channelName}}</span></p>
+              </div>
+            </mat-card-title>
+            <mat-card-content fxLayoutAlign="center center">
+              <div>
+                <iframe width="560" height="315" [src]="live.urlSafe" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              </div>
+            </mat-card-content>
+            <!-- <mat-card-actions style="margin:1px;padding-bottom:5px; padding-top: 5px;">
+            </mat-card-actions> -->
+          </mat-card>
+        </ng-container>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+
 </div>
+
 <app-footer></app-footer>

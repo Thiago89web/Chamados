@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Colaborador } from 'src/app/models/colaboradores';
 import { ColaboradorService } from 'src/app/services/colaborador.service';
+import { HandleErrorService } from 'src/app/services/handle-error-service.service';
 
 @Component({
   selector: 'app-cadastro',
@@ -24,7 +25,8 @@ export class CadastroComponent implements OnInit {
 
   constructor(private router: Router, 
     private colaboradorService: ColaboradorService,
-    private toast: ToastrService) { }
+    private toast: ToastrService,
+    private errorHandler: HandleErrorService) { }
 
   ngOnInit(): void {
   }
@@ -35,14 +37,11 @@ export class CadastroComponent implements OnInit {
       
       this.toast.success('Colaborador cadastrado com sucesso!', 'Sucesso');
       this.router.navigate(['login']);
-    }, () => {
-      //this.toast.error(ex.error.error);
-      this.toast.error('Falha ao cadastrar colaborador!', 'Erro');
-    })
+    });
   }
 
   cancel() {
-    this.router.navigate(['login'])
+    this.router.navigate(['login']);
   }
 
   validaCamposCad(): boolean {
